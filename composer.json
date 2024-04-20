@@ -1,0 +1,60 @@
+{
+  "name": "mammatus/kubernetes-events",
+  "description": "⏱️ Cron manager",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "wyrihaximus/async-test-utilities": "^8.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mammatus\\Kubernetes\\Events\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mammatus\\Tests\\Kubernetes\\Events\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "drupol/composer-packages": true,
+      "ergebnis/composer-normalize": true,
+      "icanhazstring/composer-unused": true,
+      "infection/extension-installer": true,
+      "mammatus/cron": true,
+      "mindplay/composer-locator": true,
+      "wyrihaximus/broadcast": true
+    },
+    "platform": {
+      "php": "8.2.13"
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "php-di-definitions": {
+      "di": [
+        "etc/di/*.php"
+      ]
+    },
+    "wyrihaximus": {
+      "broadcast": {
+        "has-listeners": true
+      }
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "composer normalize",
+      "composer update --lock --no-scripts"
+    ],
+    "post-update-cmd": [
+      "composer normalize",
+      "composer update --lock --no-scripts"
+    ]
+  }
+}
