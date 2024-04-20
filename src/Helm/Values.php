@@ -10,7 +10,6 @@ final readonly class Values
 {
     public function __construct(
         public Registry $registry,
-    )
-    {
+    ) {
     }
 }
