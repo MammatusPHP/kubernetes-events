@@ -1,6 +1,6 @@
 {
   "name": "mammatus/kubernetes-events",
-  "description": "⏱️ Cron manager",
+  "description": "\u2638\ud83d\udce3 Kubernetes related Events",
   "license": "MIT",
   "require": {
     "php": "^8.2"
