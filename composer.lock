@@ -8156,16 +8156,16 @@
         },
         {
             "name": "spatie/array-to-xml",
-            "version": "3.3.0",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/array-to-xml.git",
-                "reference": "f56b220fe2db1ade4c88098d83413ebdfc3bf876"
+                "reference": "7dcfc67d60b0272926dabad1ec01f6b8a5fb5e67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/f56b220fe2db1ade4c88098d83413ebdfc3bf876",
-                "reference": "f56b220fe2db1ade4c88098d83413ebdfc3bf876",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/7dcfc67d60b0272926dabad1ec01f6b8a5fb5e67",
+                "reference": "7dcfc67d60b0272926dabad1ec01f6b8a5fb5e67",
                 "shasum": ""
             },
             "require": {
@@ -8208,7 +8208,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/spatie/array-to-xml/tree/3.3.0"
+                "source": "https://github.com/spatie/array-to-xml/tree/3.4.0"
             },
             "funding": [
                 {
@@ -8220,20 +8220,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-01T10:20:27+00:00"
+            "time": "2024-12-16T12:45:15+00:00"
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",
-            "version": "5.1.6",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
-                "reference": "61e2eb567713c89987895b8f514a7a4d3bff89c9"
+                "reference": "1b1825c8c7023249454a6a94b0d0c7801b7f62a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/61e2eb567713c89987895b8f514a7a4d3bff89c9",
-                "reference": "61e2eb567713c89987895b8f514a7a4d3bff89c9",
+                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/1b1825c8c7023249454a6a94b0d0c7801b7f62a5",
+                "reference": "1b1825c8c7023249454a6a94b0d0c7801b7f62a5",
                 "shasum": ""
             },
             "require": {
@@ -8242,7 +8242,7 @@
                 "ext-json": "*",
                 "ext-libxml": "*",
                 "php": "^8.1",
-                "phpunit/phpunit": "^10.0|^11.0",
+                "phpunit/phpunit": "^10.0|^11.0|^12.0",
                 "symfony/property-access": "^5.2|^6.2|^7.0",
                 "symfony/serializer": "^5.2|^6.2|^7.0",
                 "symfony/yaml": "^5.2|^6.2|^7.0"
@@ -8289,7 +8289,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/phpunit-snapshot-assertions/issues",
-                "source": "https://github.com/spatie/phpunit-snapshot-assertions/tree/5.1.6"
+                "source": "https://github.com/spatie/phpunit-snapshot-assertions/tree/5.2.0"
             },
             "funding": [
                 {
@@ -8297,7 +8297,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-05-03T07:53:03+00:00"
+            "time": "2025-05-08T15:44:02+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
