@@ -3,7 +3,7 @@
   "description": "\u2638\ud83d\udce3 Kubernetes related Events",
   "license": "MIT",
   "require": {
-    "php": "^8.2"
+    "php": "^8.4.12"
   },
   "require-dev": {
     "wyrihaximus/test-utilities": "^6.0.10"
