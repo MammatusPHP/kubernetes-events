@@ -3,7 +3,8 @@
   "description": "\u2638\ud83d\udce3 Kubernetes related Events",
   "license": "MIT",
   "require": {
-    "php": "^8.4"
+    "php": "^8.4",
+    "symfony/yaml": "^7.3"
   },
   "require-dev": {
     "wyrihaximus/makefiles": "^0.7.10",
