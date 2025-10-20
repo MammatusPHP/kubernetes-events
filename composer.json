@@ -4,7 +4,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.4",
-    "symfony/yaml": "^7.3"
+    "symfony/yaml": "^7.3.3"
   },
   "require-dev": {
     "wyrihaximus/makefiles": "^0.7.10",
