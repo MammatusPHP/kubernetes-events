@@ -25,7 +25,7 @@ render the Chart and any additional subcharts. It has one property, the registry
 the `add` method will be returned through the `get` method and passed directly to Helm.
 
 ```php
-$values = new Values(new Values\Registry());
+$values = new Values(new Values\Registry(Values\ValuesFile::createFromFile('path/to/helm/chart/values.yaml'));
 
 $values->registry->add('secion', ['PHP_INT_SIZE' => PHP_INT_SIZE]);
 
@@ -36,7 +36,7 @@ $values->registry->get()); // Returns: ['secion' => ['PHP_INT_SIZE' => PHP_INT_S
 
 The MIT License (MIT)
 
-Copyright (c) 2024 Cees-Jan Kiewiet
+Copyright (c) 2025 Cees-Jan Kiewiet
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
