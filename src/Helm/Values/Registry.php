@@ -6,16 +6,20 @@ namespace Mammatus\Kubernetes\Events\Helm\Values;
 
 final class Registry
 {
-    /** @var array<string, array<string, mixed>> */
+    /** @var array<string, array<string|int, mixed>> */
     private array $values = [];
 
-    /** @param array<string, mixed> $values */
-    public function add(string $section, array $values): void
+    public function __construct(private readonly ValuesFile $valuesFile)
     {
-        $this->values[$section] = $values;
     }
 
-    /** @return array<string, array<string, mixed>> */
+    /** @param array<string|int, mixed> $values */
+    public function add(string $section, array $values): void
+    {
+        $this->values[$section] = $this->valuesFile->swapInValues($values);
+    }
+
+    /** @return array<string, array<string|int, mixed>> */
     public function get(): array
     {
         return $this->values;
