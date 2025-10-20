@@ -6,7 +6,7 @@ namespace Mammatus\Kubernetes\Events\Helm\Values;
 
 final class Registry
 {
-    /** @var array<string, array<mixed>> */
+    /** @var array<string, array<string, mixed>> */
     private array $values = [];
 
     /** @param array<string, mixed> $values */

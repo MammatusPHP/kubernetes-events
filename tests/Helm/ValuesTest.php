@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Mammatus\Tests\Kubernetes\Events\Helm;
 
 use Mammatus\Kubernetes\Events\Helm\Values;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
 use const PHP_INT_SIZE;
 
 final class ValuesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function registry(): void
     {
         $values = new Values(new Values\Registry());
