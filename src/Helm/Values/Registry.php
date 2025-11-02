@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Kubernetes\Events\Helm\Values;
 
+use Mammatus\Kubernetes\Events\Helm\Groups\Section;
+
 final class Registry
 {
     /** @var array<string, array<string|int, mixed>> */
@@ -14,9 +16,9 @@ final class Registry
     }
 
     /** @param array<string|int, mixed> $values */
-    public function add(string $section, array $values): void
+    public function add(Section $section, array $values): void
     {
-        $this->values[$section] = $this->valuesFile->swapInValues($values);
+        $this->values[$section->value] = $this->valuesFile->swapInValues($values);
     }
 
     /** @return array<string, array<string|int, mixed>> */
