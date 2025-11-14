@@ -4,6 +4,9 @@
   "license": "MIT",
   "require": {
     "php": "^8.4",
+    "ext-json": "^8.4",
+    "mammatus/groups": "dev-full-initial-implementation",
+    "mammatus/life-cycle-events": "dev-switch-to-groups as 2.4.0",
     "symfony/yaml": "^7.3.5"
   },
   "require-dev": {
@@ -29,6 +32,7 @@
       "icanhazstring/composer-unused": true,
       "infection/extension-installer": true,
       "mammatus/cron": true,
+      "mammatus/groups": true,
       "mindplay/composer-locator": true,
       "phpstan/extension-installer": true,
       "wyrihaximus/broadcast": true,
