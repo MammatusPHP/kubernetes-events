@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mammatus\Kubernetes\Events\Helm\Groups;
+namespace Mammatus\Kubernetes\Events\Helm\Values\Registry;
 
 enum Section: string
 {
