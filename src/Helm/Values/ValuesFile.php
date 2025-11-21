@@ -19,7 +19,13 @@ final readonly class ValuesFile
     /** @param array<string|int, mixed> $values */
     private function __construct(array $values)
     {
-        $this->replacementPairs = $this->splitIntoStrReplaceArguments($this->decorateReplacementPairs($this->extractReplacementPairs($values)));
+        $this->replacementPairs = $this->splitIntoStrReplaceArguments(
+            $this->decorateReplacementPairs(
+                $this->extractReplacementPairs(
+                    $values,
+                ),
+            ),
+        );
     }
 
     public static function createFromFile(string ...$valuesFiles): self

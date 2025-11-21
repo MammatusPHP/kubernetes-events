@@ -27,7 +27,7 @@ the `add` method will be returned through the `get` method and passed directly t
 ```php
 $values = new Values(new Values\Registry(Values\ValuesFile::createFromFile('path/to/helm/chart/values.yaml'));
 
-$values->registry->add(Section::Deployment, ['PHP_INT_SIZE' => PHP_INT_SIZE]);
+$values->registry->add(Values\Registry\Section::Deployment, ['PHP_INT_SIZE' => PHP_INT_SIZE]);
 
 $values->registry->get()); // Returns: ['deployments' => ['PHP_INT_SIZE' => PHP_INT_SIZE]]
 ```
