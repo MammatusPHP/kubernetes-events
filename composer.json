@@ -3,7 +3,7 @@
   "description": "\u2638\ud83d\udce3 Kubernetes related Events",
   "license": "MIT",
   "require": {
-    "php": "^8.4",
+    "php": "^8.5.1",
     "ext-json": "^8.4",
     "mammatus/groups": "^0.1.1",
     "symfony/yaml": "^7.4.0"
