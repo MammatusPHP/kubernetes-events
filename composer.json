@@ -9,7 +9,7 @@
     "symfony/yaml": "^7.4.0"
   },
   "require-dev": {
-    "wyrihaximus/makefiles": "^0.7.12",
+    "wyrihaximus/makefiles": "^0.7.15",
     "wyrihaximus/test-utilities": "^8.7.0"
   },
   "autoload": {
