@@ -14,13 +14,10 @@ use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
 use const DIRECTORY_SEPARATOR;
-use const PHP_INT_MAX;
-use const PHP_INT_MIN;
-use const PHP_INT_SIZE;
 
 final class ValuesTest extends TestCase
 {
-    /** @return iterable<string, array{0: array<string>, 1: array<CronJob|Deployment>, 2: array<array{0: Group, 1: array<string, mixed>}>}> */
+    /** @return iterable<string, array{0: array<string>, 1: array<CronJob|Deployment>, 2: array<array{0: Group, 1: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>, 3: array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>>}> */
     public static function provideRegistryCalls(): iterable
     {
         yield 'basic-registry' => [
@@ -33,18 +30,35 @@ final class ValuesTest extends TestCase
                     'basic',
                     self::class,
                     '* * * * *',
-                    ['PHP_INT_SIZE' => PHP_INT_SIZE],
+                    [
+                        [
+                            'helper' => 'mammatus.container.resources',
+                            'type' => 'container',
+                            'arguments' => [
+                                'cpu' => '1000m',
+                                'memory' => '263Mi',
+                            ],
+                        ],
+                    ],
                 ),
                 new Values\Registry\Deployment(
                     'basic',
                     'mammatus-basic',
                     [
-                        'key' => '${VALUES:nested.value}',
-                        'foo' => '${VALUES:env.FOO}',
+                        '${VALUES:nested.value}',
+                        '${VALUES:env.FOO}',
                     ],
                     [
-                        'key' => '${VALUES:nested.value}',
-                        'foo' => '${VALUES:env.FOO}',
+                        [
+                            'helper' => 'nested.value',
+                            'type' => 'container',
+                            'arguments' => ['key' => '${VALUES:nested.value}'],
+                        ],
+                        [
+                            'helper' => 'env.FOO',
+                            'type' => 'container',
+                            'arguments' => ['foo' => '${VALUES:env.FOO}'],
+                        ],
                     ],
                 ),
             ],
@@ -55,7 +69,16 @@ final class ValuesTest extends TestCase
                         'name' => 'basic',
                         'class' => self::class,
                         'schedule' => '* * * * *',
-                        'addOns' => ['PHP_INT_SIZE' => PHP_INT_SIZE],
+                        'addOns' => [
+                            [
+                                'helper' => 'mammatus.container.resources',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'cpu' => '1000m',
+                                    'memory' => '263Mi',
+                                ],
+                            ],
+                        ],
                     ],
                 ],
                 Values\Registry\Section::Deployment->value => [
@@ -63,12 +86,20 @@ final class ValuesTest extends TestCase
                         'name' => 'basic',
                         'command' => 'mammatus-basic',
                         'arguments' => [
-                            'key' => 'bier',
-                            'foo' => 'bar',
+                            'bier',
+                            'bar',
                         ],
                         'addOns' => [
-                            'key' => 'bier',
-                            'foo' => 'bar',
+                            [
+                                'helper' => 'nested.value',
+                                'type' => 'container',
+                                'arguments' => ['key' => 'bier'],
+                            ],
+                            [
+                                'helper' => 'env.FOO',
+                                'type' => 'container',
+                                'arguments' => ['foo' => 'bar'],
+                            ],
                         ],
                     ],
                 ],
@@ -85,18 +116,35 @@ final class ValuesTest extends TestCase
                     'basic',
                     self::class,
                     '* * * * *',
-                    ['PHP_INT_SIZE' => PHP_INT_SIZE],
+                    [
+                        [
+                            'helper' => 'mammatus.container.resources',
+                            'type' => 'container',
+                            'arguments' => [
+                                'cpu' => '1000m',
+                                'memory' => '263Mi',
+                            ],
+                        ],
+                    ],
                 ),
                 new Values\Registry\Deployment(
                     'bier',
                     'mammatus-bier',
                     [
-                        'key' => '${VALUES:nested.value}',
-                        'foo' => '${VALUES:env.FOO}',
+                        '${VALUES:nested.value}',
+                        '${VALUES:env.FOO}',
                     ],
                     [
-                        'key' => '${VALUES:nested.value}',
-                        'foo' => '${VALUES:env.FOO}',
+                        [
+                            'helper' => 'nested.value',
+                            'type' => 'container',
+                            'arguments' => ['key' => '${VALUES:nested.value}'],
+                        ],
+                        [
+                            'helper' => 'env.FOO',
+                            'type' => 'container',
+                            'arguments' => ['foo' => '${VALUES:env.FOO}'],
+                        ],
                     ],
                 ),
             ],
@@ -106,14 +154,50 @@ final class ValuesTest extends TestCase
                         Type::Normal,
                         'basic',
                     ),
-                    ['PHP_INT_MAX' => PHP_INT_MAX],
+                    [
+                        [
+                            'helper' => 'mammatus.container.resources',
+                            'type' => 'container',
+                            'arguments' => [
+                                'cpu' => '1000m',
+                                'memory' => '263Mi',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     new Group(
                         Type::Daemon,
-                        'spirit',
+                        'healthz',
                     ),
-                    ['PHP_INT_MIN' => PHP_INT_MIN],
+                    [
+                        [
+                            'helper' => 'mammatus.container.port',
+                            'type' => 'container',
+                            'arguments' => [
+                                'name' => 'healthz',
+                                'containerPort' => 9666,
+                            ],
+                        ],
+                        [
+                            'helper' => 'mammatus.container.probe',
+                            'type' => 'container',
+                            'arguments' => [
+                                'liveness' => [
+                                    'path' => '/probe/liveness',
+                                    'vhost' => 'healthz',
+                                ],
+                                'readiness' => [
+                                    'path' => '/probe/readiness',
+                                    'vhost' => 'healthz',
+                                ],
+                                'startUp' => [
+                                    'path' => '/probe/startup',
+                                    'vhost' => 'healthz',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
@@ -123,8 +207,40 @@ final class ValuesTest extends TestCase
                         'class' => self::class,
                         'schedule' => '* * * * *',
                         'addOns' => [
-                            'PHP_INT_SIZE' => PHP_INT_SIZE,
-                            'PHP_INT_MIN' => PHP_INT_MIN,
+                            [
+                                'helper' => 'mammatus.container.resources',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'cpu' => '1000m',
+                                    'memory' => '263Mi',
+                                ],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.port',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'name' => 'healthz',
+                                    'containerPort' => 9666,
+                                ],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.probe',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'liveness' => [
+                                        'path' => '/probe/liveness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'readiness' => [
+                                        'path' => '/probe/readiness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'startUp' => [
+                                        'path' => '/probe/startup',
+                                        'vhost' => 'healthz',
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -133,13 +249,46 @@ final class ValuesTest extends TestCase
                         'name' => 'bier',
                         'command' => 'mammatus-bier',
                         'arguments' => [
-                            'key' => 'bier',
-                            'foo' => 'bar',
+                            'bier',
+                            'bar',
                         ],
                         'addOns' => [
-                            'key' => 'bier',
-                            'foo' => 'bar',
-                            'PHP_INT_MIN' => PHP_INT_MIN,
+                            [
+                                'helper' => 'nested.value',
+                                'type' => 'container',
+                                'arguments' => ['key' => 'bier'],
+                            ],
+                            [
+                                'helper' => 'env.FOO',
+                                'type' => 'container',
+                                'arguments' => ['foo' => 'bar'],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.port',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'name' => 'healthz',
+                                    'containerPort' => 9666,
+                                ],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.probe',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'liveness' => [
+                                        'path' => '/probe/liveness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'readiness' => [
+                                        'path' => '/probe/readiness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'startUp' => [
+                                        'path' => '/probe/startup',
+                                        'vhost' => 'healthz',
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                     'basic' => [
@@ -147,8 +296,40 @@ final class ValuesTest extends TestCase
                         'command' => 'mammatus',
                         'arguments' => ['basic'],
                         'addOns' => [
-                            'PHP_INT_MAX' => PHP_INT_MAX,
-                            'PHP_INT_MIN' => PHP_INT_MIN,
+                            [
+                                'helper' => 'mammatus.container.resources',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'cpu' => '1000m',
+                                    'memory' => '263Mi',
+                                ],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.port',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'name' => 'healthz',
+                                    'containerPort' => 9666,
+                                ],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.probe',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'liveness' => [
+                                        'path' => '/probe/liveness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'readiness' => [
+                                        'path' => '/probe/readiness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'startUp' => [
+                                        'path' => '/probe/startup',
+                                        'vhost' => 'healthz',
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -167,7 +348,16 @@ final class ValuesTest extends TestCase
                         Type::Normal,
                         'basic',
                     ),
-                    ['PHP_INT_SIZE' => PHP_INT_SIZE],
+                    [
+                        [
+                            'helper' => 'mammatus.container.resources',
+                            'type' => 'container',
+                            'arguments' => [
+                                'cpu' => '1000m',
+                                'memory' => '263Mi',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     new Group(
@@ -175,8 +365,16 @@ final class ValuesTest extends TestCase
                         'spirit',
                     ),
                     [
-                        'key' => '${VALUES:nested.value}',
-                        'foo' => '${VALUES:env.FOO}',
+                        [
+                            'helper' => 'nested.value',
+                            'type' => 'container',
+                            'arguments' => ['key' => '${VALUES:nested.value}'],
+                        ],
+                        [
+                            'helper' => 'env.FOO',
+                            'type' => 'container',
+                            'arguments' => ['foo' => '${VALUES:env.FOO}'],
+                        ],
                     ],
                 ],
             ],
@@ -187,9 +385,24 @@ final class ValuesTest extends TestCase
                         'command' => 'mammatus',
                         'arguments' => ['basic'],
                         'addOns' => [
-                            'PHP_INT_SIZE' => PHP_INT_SIZE,
-                            'key' => 'bier',
-                            'foo' => 'bar',
+                            [
+                                'helper' => 'mammatus.container.resources',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'cpu' => '1000m',
+                                    'memory' => '263Mi',
+                                ],
+                            ],
+                            [
+                                'helper' => 'nested.value',
+                                'type' => 'container',
+                                'arguments' => ['key' => 'bier'],
+                            ],
+                            [
+                                'helper' => 'env.FOO',
+                                'type' => 'container',
+                                'arguments' => ['foo' => 'bar'],
+                            ],
                         ],
                     ],
                 ],
@@ -198,10 +411,10 @@ final class ValuesTest extends TestCase
     }
 
     /**
-     * @param array<string>                                   $valuesFiles
-     * @param array<CronJob|Deployment>                       $registryCalls
-     * @param array<array{0: Group, 1: array<string, mixed>}> $groupsCalls
-     * @param array<mixed>                                    $expectedValues
+     * @param array<string>                                                                                                                                                                                                                                                                                                                   $valuesFiles
+     * @param array<CronJob|Deployment>                                                                                                                                                                                                                                                                                                       $registryCalls
+     * @param array<array{0: Group, 1: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>                                                                                                                                                                                                                          $groupsCalls
+     * @param array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> $expectedValues
      */
     #[DataProvider('provideRegistryCalls')]
     #[Test]

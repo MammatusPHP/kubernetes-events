@@ -28,13 +28,13 @@ final readonly class Values
         $this->registry->add($values);
     }
 
-    /** @param array<string|int, mixed> $addOns */
+    /** @param array<array{helper: string, type: string, arguments: array<string, mixed>}> $addOns */
     public function addToGroup(Group $group, array $addOns): void
     {
         $this->groups->add($group, $addOns);
     }
 
-    /** @return array<string|int, mixed> */
+    /** @return array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> */
     public function get(): array
     {
         $registry = clone $this->registry;
@@ -68,6 +68,7 @@ final readonly class Values
             }
         }
 
+        /** @phpstan-ignore return.type */
         return $this->valuesFile->swapInValues(
             $this->convertToArray(
                 $values,
@@ -78,7 +79,7 @@ final readonly class Values
     /**
      * @param array<string, array<string|int, CronJob|Deployment>> $fromValues
      *
-     * @return array<string, array<string|int, array<string, mixed>>>
+     * @return array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>>
      */
     private function convertToArray(array $fromValues): array
     {
@@ -89,6 +90,7 @@ final readonly class Values
             }
         }
 
+        /** @phpstan-ignore return.type */
         return $toValues;
     }
 }
