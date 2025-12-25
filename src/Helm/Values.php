@@ -10,8 +10,10 @@ use Mammatus\Kubernetes\Events\Helm\Values\Groups;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\CronJob;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\Deployment;
+use Mammatus\Kubernetes\Events\Helm\Values\Registry\Section;
 use Mammatus\Kubernetes\Events\Helm\Values\ValuesFile;
 
+use function array_key_exists;
 use function count;
 
 final readonly class Values
@@ -68,10 +70,12 @@ final readonly class Values
             }
         }
 
-        /** @phpstan-ignore return.type */
-        return $this->valuesFile->swapInValues(
-            $this->convertToArray(
-                $values,
+        return $this->removeProbeAddOnFromCronJobs(
+            /** @phpstan-ignore argument.type */
+            $this->valuesFile->swapInValues(
+                $this->convertToArray(
+                    $values,
+                ),
             ),
         );
     }
@@ -92,5 +96,30 @@ final readonly class Values
 
         /** @phpstan-ignore return.type */
         return $toValues;
+    }
+
+    /**
+     * @param array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> $values
+     *
+     * @return array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>>
+     */
+    private function removeProbeAddOnFromCronJobs(array $values): array
+    {
+        if (array_key_exists(Section::CronJob->value, $values)) {
+            foreach ($values[Section::CronJob->value] as $name => $cronJob) {
+                $addOns = [];
+                foreach ($cronJob['addOns'] as $addOn) {
+                    if ($addOn['helper'] === 'mammatus.container.probe') {
+                        continue;
+                    }
+
+                    $addOns[] = $addOn;
+                }
+
+                $values[Section::CronJob->value][$name]['addOns'] = $addOns;
+            }
+        }
+
+        return $values;
     }
 }
