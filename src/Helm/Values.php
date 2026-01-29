@@ -18,11 +18,20 @@ use function count;
 
 final readonly class Values
 {
-    public function __construct(
+    private function __construct(
         private Groups $groups,
         private Registry $registry,
         private ValuesFile $valuesFile,
     ) {
+    }
+
+    public static function createFromFile(string ...$valuesFiles): self
+    {
+        return new self(
+            new Groups(),
+            new Registry(),
+            ValuesFile::createFromFile(...$valuesFiles),
+        );
     }
 
     public function add(CronJob|Deployment $values): void

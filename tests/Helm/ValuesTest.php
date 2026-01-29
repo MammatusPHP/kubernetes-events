@@ -402,11 +402,7 @@ final class ValuesTest extends TestCase
     #[Test]
     public function get(array $valuesFiles, array $registryCalls, array $groupsCalls, array $expectedValues): void
     {
-        $values = new Values(
-            new Values\Groups(),
-            new Values\Registry(),
-            Values\ValuesFile::createFromFile(...$valuesFiles),
-        );
+        $values = Values::createFromFile(...$valuesFiles);
 
         foreach ($registryCalls as $registryCall) {
             $values->add($registryCall);
