@@ -25,7 +25,7 @@ render the Chart and any additional subcharts. It has one property, the registry
 the `add` method will be returned through the `get` method and passed directly to Helm.
 
 ```php
-$values = new Values(new Values\Registry(Values\ValuesFile::createFromFile('path/to/helm/chart/values.yaml'));
+$values = Values::createFromFile('path/to/helm/chart/values.yaml');
 
 $values->registry->add(Values\Registry\Section::Deployment, ['PHP_INT_SIZE' => PHP_INT_SIZE]);
 
