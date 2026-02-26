@@ -6,7 +6,7 @@
     "php": "^8.4",
     "ext-json": "^8.4",
     "mammatus/groups": "^0.1.4",
-    "symfony/yaml": "^7.4.0"
+    "symfony/yaml": "^8.0.6"
   },
   "require-dev": {
     "wyrihaximus/makefiles": "^0.7.16",
