@@ -16,6 +16,7 @@ use Mammatus\Kubernetes\Events\Helm\Values\ValuesFile;
 use function array_key_exists;
 use function count;
 
+/** @api */
 final readonly class Values
 {
     private function __construct(

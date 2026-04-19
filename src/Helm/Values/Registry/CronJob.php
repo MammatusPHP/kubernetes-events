@@ -6,6 +6,7 @@ namespace Mammatus\Kubernetes\Events\Helm\Values\Registry;
 
 use JsonSerializable;
 
+/** @api */
 final class CronJob implements JsonSerializable
 {
     /**
@@ -17,7 +18,6 @@ final class CronJob implements JsonSerializable
         public readonly string $name,
         public readonly string $class,
         public readonly string $schedule,
-        /** @phpstan-ignore shipmonk.publicPropertyNotReadonly */
         public private(set) array $addOns = [],
     ) {
     }

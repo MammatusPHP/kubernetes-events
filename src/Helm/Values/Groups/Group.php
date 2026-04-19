@@ -15,7 +15,6 @@ final class Group
      */
     public function __construct(
         public readonly GroupAttribute $group,
-        /** @phpstan-ignore shipmonk.publicPropertyNotReadonly */
         public private(set) array $addOns = [],
     ) {
     }
