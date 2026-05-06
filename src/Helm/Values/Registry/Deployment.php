@@ -6,6 +6,7 @@ namespace Mammatus\Kubernetes\Events\Helm\Values\Registry;
 
 use JsonSerializable;
 
+/** @api */
 final class Deployment implements JsonSerializable
 {
     /**
@@ -17,9 +18,7 @@ final class Deployment implements JsonSerializable
     public function __construct(
         public readonly string $name,
         public readonly string $command,
-        /** @phpstan-ignore shipmonk.publicPropertyNotReadonly */
         public private(set) array $arguments = [],
-        /** @phpstan-ignore shipmonk.publicPropertyNotReadonly */
         public private(set) array $addOns = [],
     ) {
     }
