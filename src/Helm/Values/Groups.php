@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mammatus\Kubernetes\Events\Helm\Values;
 
 use Mammatus\Groups\Attributes\Group as GroupAttribute;
-use Mammatus\Groups\Generated\AbstractGroups;
+use Mammatus\Groups\Groups as GeneratedGroups;
 use Mammatus\Kubernetes\Events\Helm\Values\Groups\Group;
 
 use function array_key_exists;
@@ -17,7 +17,7 @@ final class Groups
 
     public function __construct()
     {
-        foreach (AbstractGroups::groups() as $group) {
+        foreach (GeneratedGroups::groups() as $group) {
             $this->groups[$group->name] = new Group($group);
         }
     }
