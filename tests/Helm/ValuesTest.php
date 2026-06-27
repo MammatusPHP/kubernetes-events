@@ -102,6 +102,12 @@ final class ValuesTest extends TestCase
                             ],
                         ],
                     ],
+                    'app' => [
+                        'name' => 'app',
+                        'command' => 'mammatus',
+                        'arguments' => [0 => 'app'],
+                        'addOns' => [],
+                    ],
                 ],
             ],
         ];
@@ -273,6 +279,39 @@ final class ValuesTest extends TestCase
                             ],
                         ],
                     ],
+                    'app' => [
+                        'name' => 'app',
+                        'command' => 'mammatus',
+                        'arguments' => ['app'],
+                        'addOns' => [
+                            [
+                                'helper' => 'mammatus.container.port',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'name' => 'healthz',
+                                    'containerPort' => 9666,
+                                ],
+                            ],
+                            [
+                                'helper' => 'mammatus.container.probe',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'liveness' => [
+                                        'path' => '/probe/liveness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'readiness' => [
+                                        'path' => '/probe/readiness',
+                                        'vhost' => 'healthz',
+                                    ],
+                                    'startUp' => [
+                                        'path' => '/probe/startup',
+                                        'vhost' => 'healthz',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     'basic' => [
                         'name' => 'basic',
                         'command' => 'mammatus',
@@ -362,6 +401,23 @@ final class ValuesTest extends TestCase
             ],
             [
                 Values\Registry\Section::Deployment->value => [
+                    'app' => [
+                        'name' => 'app',
+                        'command' => 'mammatus',
+                        'arguments' => ['app'],
+                        'addOns' => [
+                            [
+                                'helper' => 'nested.value',
+                                'type' => 'container',
+                                'arguments' => ['key' => 'bier'],
+                            ],
+                            [
+                                'helper' => 'env.FOO',
+                                'type' => 'container',
+                                'arguments' => ['foo' => 'bar'],
+                            ],
+                        ],
+                    ],
                     'basic' => [
                         'name' => 'basic',
                         'command' => 'mammatus',

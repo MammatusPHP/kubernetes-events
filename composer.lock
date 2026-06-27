@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "250aa222a0723d019a261cf59fc62957",
+    "content-hash": "50dabe0afacf5f20caf513f59195eb36",
     "packages": [
         {
             "name": "jetbrains/phpstorm-stubs",
@@ -52,16 +52,16 @@
         },
         {
             "name": "mammatus/groups",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/groups.git",
-                "reference": "7caed69d49ab13387129487f30e37c43e6c37fc2"
+                "reference": "3ac7379777f60a46dabe5437af5b31ee458bf722"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/groups/zipball/7caed69d49ab13387129487f30e37c43e6c37fc2",
-                "reference": "7caed69d49ab13387129487f30e37c43e6c37fc2",
+                "url": "https://api.github.com/repos/MammatusPHP/groups/zipball/3ac7379777f60a46dabe5437af5b31ee458bf722",
+                "reference": "3ac7379777f60a46dabe5437af5b31ee458bf722",
                 "shasum": ""
             },
             "require": {
@@ -71,17 +71,17 @@
                 "php": "^8.4",
                 "psr/container": "^1 || ^2 || ^3",
                 "psr/log": "^3.0.2",
-                "roave/better-reflection": "^6.69.0",
+                "roave/better-reflection": "^6.71.0",
                 "wyrihaximus/broadcast-contracts": "^1.3.0",
-                "wyrihaximus/generative-composer-plugin-tooling": "^1.6.0"
+                "wyrihaximus/generative-composer-plugin-tooling": "^1.7.2"
             },
             "require-dev": {
                 "colinodell/psr-testlogger": "^1.3.1",
                 "pimple/pimple": "^3.6.2",
                 "shipmonk/dead-code-detector": "^0.14.1 || ^0.15 || ^1.1.0",
                 "wyrihaximus/broadcast": "^2.7.0",
-                "wyrihaximus/makefiles": "^0.10.4",
-                "wyrihaximus/test-utilities": "^12.2.0"
+                "wyrihaximus/makefiles": "^0.12.1",
+                "wyrihaximus/test-utilities": "^13.2.0"
             },
             "suggest": {
                 "shipmonk/dead-code-detector": "This package supports ^1 || ^0.15 || ^0.14.1 by hooking in and marking all listeners as alive"
@@ -116,7 +116,7 @@
             "description": "👩‍👩‍👧‍👦 All groups related tooling",
             "support": {
                 "issues": "https://github.com/MammatusPHP/groups/issues",
-                "source": "https://github.com/MammatusPHP/groups/tree/0.2.0"
+                "source": "https://github.com/MammatusPHP/groups/tree/0.3.0"
             },
             "funding": [
                 {
@@ -124,7 +124,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-27T10:44:15+00:00"
+            "time": "2026-06-27T11:45:12+00:00"
         },
         {
             "name": "mammatus/life-cycle-events",
@@ -715,16 +715,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.24.0",
+            "version": "v3.27.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "a6769aefb305efef849dc25c9fd1653358c148f0"
+                "reference": "ae2071bffb38f04847fc0864d730c94b9cb8ab74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a6769aefb305efef849dc25c9fd1653358c148f0",
-                "reference": "a6769aefb305efef849dc25c9fd1653358c148f0",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ae2071bffb38f04847fc0864d730c94b9cb8ab74",
+                "reference": "ae2071bffb38f04847fc0864d730c94b9cb8ab74",
                 "shasum": ""
             },
             "require": {
@@ -779,7 +779,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.24.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.27.1"
             },
             "funding": [
                 {
@@ -791,7 +791,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-17T21:31:11+00:00"
+            "time": "2026-05-30T17:09:26+00:00"
         },
         {
             "name": "wyrihaximus/broadcast-contracts",
@@ -835,28 +835,28 @@
         },
         {
             "name": "wyrihaximus/generative-composer-plugin-tooling",
-            "version": "1.6.0",
+            "version": "1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling.git",
-                "reference": "b575b49476310fa484d6b2a1115700be3d5b63b2"
+                "reference": "bfd96740484f535a1dd43b0eada65ddd1d2c844f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-generative-composer-plugin-tooling/zipball/b575b49476310fa484d6b2a1115700be3d5b63b2",
-                "reference": "b575b49476310fa484d6b2a1115700be3d5b63b2",
+                "url": "https://api.github.com/repos/WyriHaximus/php-generative-composer-plugin-tooling/zipball/bfd96740484f535a1dd43b0eada65ddd1d2c844f",
+                "reference": "bfd96740484f535a1dd43b0eada65ddd1d2c844f",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2",
                 "php": "^8.4",
-                "roave/better-reflection": "^6.69.0",
+                "roave/better-reflection": "^6.71.0",
                 "wyrihaximus/list-classes-in-directory": "^1.7",
-                "wyrihaximus/simple-twig": "^2.2.1"
+                "wyrihaximus/simple-twig": "^2.3.0"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.10.3",
-                "wyrihaximus/test-utilities": "^12.1.0"
+                "wyrihaximus/makefiles": "^0.10.6",
+                "wyrihaximus/test-utilities": "^12.2.0"
             },
             "type": "library",
             "autoload": {
@@ -877,7 +877,7 @@
             "description": "🐦‍🔥 Generative Composer Plugin Tooling",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling/issues",
-                "source": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling/tree/1.6.0"
+                "source": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling/tree/1.7.2"
             },
             "funding": [
                 {
@@ -885,7 +885,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-17T18:55:11+00:00"
+            "time": "2026-05-22T18:32:15+00:00"
         },
         {
             "name": "wyrihaximus/list-classes-in-directory",
@@ -942,24 +942,25 @@
         },
         {
             "name": "wyrihaximus/simple-twig",
-            "version": "2.2.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-simple-twig.git",
-                "reference": "1647efb09c4acb66d36911f480c7881be1ade99e"
+                "reference": "187fa8fcbb4c53414d85c2b5be8fb084fbeeb779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-simple-twig/zipball/1647efb09c4acb66d36911f480c7881be1ade99e",
-                "reference": "1647efb09c4acb66d36911f480c7881be1ade99e",
+                "url": "https://api.github.com/repos/WyriHaximus/php-simple-twig/zipball/187fa8fcbb4c53414d85c2b5be8fb084fbeeb779",
+                "reference": "187fa8fcbb4c53414d85c2b5be8fb084fbeeb779",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.2",
-                "twig/twig": "^3.14"
+                "php": "^8.4",
+                "twig/twig": "^3.27.0"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^6.0.10"
+                "wyrihaximus/makefiles": "^0.10.6",
+                "wyrihaximus/test-utilities": "^12.2.0"
             },
             "type": "library",
             "autoload": {
@@ -983,7 +984,7 @@
             "description": "🌱 Wrapper around Twig making rendering a string template trivial",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-simple-twig/issues",
-                "source": "https://github.com/WyriHaximus/php-simple-twig/tree/2.2.1"
+                "source": "https://github.com/WyriHaximus/php-simple-twig/tree/2.4.0"
             },
             "funding": [
                 {
@@ -991,7 +992,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-12T14:20:51+00:00"
+            "time": "2026-05-29T11:21:53+00:00"
         }
     ],
     "packages-dev": [
