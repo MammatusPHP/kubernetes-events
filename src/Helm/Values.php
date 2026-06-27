@@ -46,7 +46,7 @@ final readonly class Values
         $this->groups->add($group, $addOns);
     }
 
-    /** @return array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> */
+    /** @return array<string, array<string, array{name: string, command?: string, arguments?: array<int, mixed>, class?: string, schedule?: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> */
     public function get(): array
     {
         $registry = clone $this->registry;
@@ -109,9 +109,9 @@ final readonly class Values
     }
 
     /**
-     * @param array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> $values
+     * @param array<string, array<string, array{name: string, command?: string, arguments?: array<int, mixed>, class?: string, schedule?: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>> $values
      *
-     * @return array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>>
+     * @return array<string, array<string, array{name: string, command?: string, arguments?: array<int, mixed>, class?: string, schedule?: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>>
      */
     private function removeProbeAddOnFromCronJobs(array $values): array
     {
