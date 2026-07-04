@@ -11,6 +11,7 @@ use Mammatus\Kubernetes\Events\Helm\Values\Registry;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\CronJob;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\Deployment;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\Section;
+use Mammatus\Kubernetes\Events\Helm\Values\Registry\Service;
 use Mammatus\Kubernetes\Events\Helm\Values\ValuesFile;
 
 use function array_key_exists;
@@ -35,7 +36,7 @@ final readonly class Values
         );
     }
 
-    public function add(CronJob|Deployment $values): void
+    public function add(CronJob|Deployment|Service $values): void
     {
         $this->registry->add($values);
     }
@@ -75,6 +76,10 @@ final readonly class Values
 
             foreach ($values as $type => $items) {
                 foreach ($items as $name => $item) {
+                    if ($values[$type][$name] instanceof Service) {
+                        continue;
+                    }
+
                     $values[$type][$name]->add($group->addOns);
                 }
             }
@@ -91,7 +96,7 @@ final readonly class Values
     }
 
     /**
-     * @param array<string, array<string|int, CronJob|Deployment>> $fromValues
+     * @param array<string, array<string|int, CronJob|Deployment|Service>> $fromValues
      *
      * @return array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>>
      */
