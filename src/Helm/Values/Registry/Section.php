@@ -9,4 +9,5 @@ enum Section: string
     case CronJob    = 'cronjobs';
     case Deployment = 'deployments';
     case Service    = 'services';
+    case Ingress    = 'ingresses';
 }

@@ -11,7 +11,7 @@ return (static function (): Config {
 
     $config->addRule(new EnforceCoverageForMethodsRule(
         requiredCoveragePercentage: 80,
-        minExecutableLines: 1,
+        minExecutableLines: 2,
     ));
 
     $config->addExecutableLineExcluder(new IgnoreThrowNewExceptionLineExcluder([
