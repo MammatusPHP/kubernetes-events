@@ -35,6 +35,7 @@
       "mindplay/composer-locator": true,
       "phpstan/extension-installer": true,
       "wyrihaximus/broadcast": true,
+      "wyrihaximus/generative-composer-plugin-tooling": true,
       "wyrihaximus/makefiles": true,
       "wyrihaximus/test-utilities": true
     },

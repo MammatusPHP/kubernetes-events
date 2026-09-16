@@ -9,6 +9,7 @@ use Mammatus\Groups\Type;
 use Mammatus\Kubernetes\Events\Helm\Values;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\CronJob;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\Deployment;
+use Mammatus\Kubernetes\Events\Helm\Values\Registry\Ingress;
 use Mammatus\Kubernetes\Events\Helm\Values\Registry\Service;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,7 +19,7 @@ use const DIRECTORY_SEPARATOR;
 
 final class ValuesTest extends TestCase
 {
-    /** @return iterable<string, array{0: array<string>, 1: array<CronJob|Deployment|Service>, 2: array<array{0: Group, 1: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>, 3: array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, group: string, port:int}>>}> */
+    /** @return iterable<string, array{0: array<string>, 1: array<CronJob|Deployment|Ingress|Service>, 2: array<array{0: Group, 1: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>, 3: array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, group: string, port:int}|array{name: string, service: string, host: string, path: string}>>}> */
     public static function provideRegistryCalls(): iterable
     {
         yield 'basic-registry' => [
@@ -74,6 +75,12 @@ final class ValuesTest extends TestCase
                     'frontend',
                     'basic',
                     6969,
+                ),
+                new Values\Registry\Ingress(
+                    'frontend',
+                    'frontend',
+                    'www.example.test',
+                    '/api',
                 ),
             ],
             [],
@@ -136,6 +143,86 @@ final class ValuesTest extends TestCase
                         'name' => 'frontend',
                         'group' => 'basic',
                         'port' => 6969,
+                    ],
+                ],
+                Values\Registry\Section::Ingress->value => [
+                    'frontend' => [
+                        'name' => 'frontend',
+                        'service' => 'frontend',
+                        'host' => 'www.example.test',
+                        'path' => '/api',
+                    ],
+                ],
+            ],
+        ];
+
+        yield 'ingress-and-service-skip-daemon-add-ons' => [
+            [
+                __DIR__ . DIRECTORY_SEPARATOR . 'values.yaml',
+                __DIR__ . DIRECTORY_SEPARATOR . 'values-secrets.yaml',
+            ],
+            [
+                new Values\Registry\Service(
+                    'frontend',
+                    'basic',
+                    6969,
+                ),
+                new Values\Registry\Ingress(
+                    'frontend',
+                    'frontend',
+                    'www.example.test',
+                    '/healthz',
+                ),
+            ],
+            [
+                [
+                    new Group(
+                        Type::Daemon,
+                        'healthz',
+                    ),
+                    [
+                        [
+                            'helper' => 'mammatus.container.port',
+                            'type' => 'container',
+                            'arguments' => [
+                                'name' => 'healthz',
+                                'containerPort' => 9666,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                Values\Registry\Section::Service->value => [
+                    'frontend' => [
+                        'name' => 'frontend',
+                        'group' => 'basic',
+                        'port' => 6969,
+                    ],
+                ],
+                Values\Registry\Section::Ingress->value => [
+                    'frontend' => [
+                        'name' => 'frontend',
+                        'service' => 'frontend',
+                        'host' => 'www.example.test',
+                        'path' => '/healthz',
+                    ],
+                ],
+                Values\Registry\Section::Deployment->value => [
+                    'app' => [
+                        'name' => 'app',
+                        'command' => 'mammatus',
+                        'arguments' => ['app'],
+                        'addOns' => [
+                            [
+                                'helper' => 'mammatus.container.port',
+                                'type' => 'container',
+                                'arguments' => [
+                                    'name' => 'healthz',
+                                    'containerPort' => 9666,
+                                ],
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -478,10 +565,10 @@ final class ValuesTest extends TestCase
     }
 
     /**
-     * @param array<string>                                                                                                                                                                                                                                                                                                                                                                $valuesFiles
-     * @param array<CronJob|Deployment|Service>                                                                                                                                                                                                                                                                                                                                            $registryCalls
-     * @param array<array{0: Group, 1: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>                                                                                                                                                                                                                                                                       $groupsCalls
-     * @param array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, group: string, port:int}>> $expectedValues
+     * @param array<string>                                                                                                                                                                                                                                                                                                                                                                                                                                 $valuesFiles
+     * @param array<CronJob|Deployment|Ingress|Service>                                                                                                                                                                                                                                                                                                                                                                                                     $registryCalls
+     * @param array<array{0: Group, 1: array<array{helper: string, type: string, arguments: array<string, mixed>}>}>                                                                                                                                                                                                                                                                                                                                        $groupsCalls
+     * @param array<string, array<string, array{name: string, command: string, arguments: array<int, mixed>, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, class: string, schedule: string, addOns: array<array{helper: string, type: string, arguments: array<string, mixed>}>}|array{name: string, group: string, port:int}|array{name: string, service: string, host: string, path: string}>> $expectedValues
      */
     #[DataProvider('provideRegistryCalls')]
     #[Test]
