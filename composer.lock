@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecbb9645fa8a11b2db626e65da241f78",
+    "content-hash": "bf723c85cfb3703fc0ac8ac4a65f313b",
     "packages": [
         {
             "name": "jetbrains/phpstorm-stubs",
@@ -48,20 +48,21 @@
                 "stubs",
                 "type"
             ],
-            "time": "2026-06-12T13:19:10+00:00"
+            "time": "2026-06-12T13:19:10+00:00",
+            "published-time": "2026-07-22T11:41:13+00:00"
         },
         {
             "name": "mammatus/groups",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/groups.git",
-                "reference": "1c221290e33810363ff61c89da28eaf0f9a403c4"
+                "reference": "9bf9ec43e66f23408bc25dba5ef95833b031850c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/groups/zipball/1c221290e33810363ff61c89da28eaf0f9a403c4",
-                "reference": "1c221290e33810363ff61c89da28eaf0f9a403c4",
+                "url": "https://api.github.com/repos/MammatusPHP/groups/zipball/9bf9ec43e66f23408bc25dba5ef95833b031850c",
+                "reference": "9bf9ec43e66f23408bc25dba5ef95833b031850c",
                 "shasum": ""
             },
             "require": {
@@ -71,17 +72,17 @@
                 "php": "^8.4",
                 "psr/container": "^1 || ^2 || ^3",
                 "psr/log": "^3.0.2",
-                "roave/better-reflection": "^6.71.0",
+                "roave/better-reflection": "^6.75.0",
                 "wyrihaximus/broadcast-contracts": "^1.3.0",
-                "wyrihaximus/generative-composer-plugin-tooling": "^1.7.2"
+                "wyrihaximus/generative-composer-plugin-tooling": "^1.9.1"
             },
             "require-dev": {
                 "colinodell/psr-testlogger": "^1.3.1",
                 "pimple/pimple": "^3.6.2",
                 "shipmonk/dead-code-detector": "^0.14.1 || ^0.15 || ^1.1.0",
                 "wyrihaximus/broadcast": "^2.7.0",
-                "wyrihaximus/makefiles": "^0.12.3",
-                "wyrihaximus/test-utilities": "^13.3.0"
+                "wyrihaximus/makefiles": "^0.15.5",
+                "wyrihaximus/test-utilities": "^14.7.0"
             },
             "suggest": {
                 "shipmonk/dead-code-detector": "This package supports ^1 || ^0.15 || ^0.14.1 by hooking in and marking all listeners as alive"
@@ -116,7 +117,7 @@
             "description": "👩‍👩‍👧‍👦 All groups related tooling",
             "support": {
                 "issues": "https://github.com/MammatusPHP/groups/issues",
-                "source": "https://github.com/MammatusPHP/groups/tree/0.4.0"
+                "source": "https://github.com/MammatusPHP/groups/tree/0.4.1"
             },
             "funding": [
                 {
@@ -124,7 +125,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-05T09:50:02+00:00"
+            "time": "2026-11-08T21:21:52+00:00",
+            "published-time": "2026-11-08T21:26:03+00:00"
         },
         {
             "name": "mammatus/life-cycle-events",
@@ -167,7 +169,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-19T10:55:24+00:00"
+            "time": "2025-10-19T10:55:24+00:00",
+            "published-time": "2025-10-19T10:56:22+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -224,7 +227,8 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.9.0"
             },
-            "time": "2026-09-13T18:51:52+00:00"
+            "time": "2026-09-13T18:51:52+00:00",
+            "published-time": "2026-09-13T18:53:16+00:00"
         },
         {
             "name": "psr/container",
@@ -277,7 +281,8 @@
                 "issues": "https://github.com/php-fig/container/issues",
                 "source": "https://github.com/php-fig/container/tree/2.0.2"
             },
-            "time": "2021-11-05T16:47:00+00:00"
+            "time": "2021-11-05T16:47:00+00:00",
+            "published-time": "2021-11-05T16:53:27+00:00"
         },
         {
             "name": "psr/log",
@@ -327,34 +332,35 @@
             "support": {
                 "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2024-09-11T13:17:53+00:00"
+            "time": "2024-09-11T13:17:53+00:00",
+            "published-time": "2024-09-11T13:21:14+00:00"
         },
         {
             "name": "roave/better-reflection",
-            "version": "6.73.0",
+            "version": "6.75.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "a6a93a3bd7681627f2750bfa8f41e586d32dc67d"
+                "reference": "b68eed282302be0278a2615ccb4448a9c9d1d4c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/a6a93a3bd7681627f2750bfa8f41e586d32dc67d",
-                "reference": "a6a93a3bd7681627f2750bfa8f41e586d32dc67d",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/b68eed282302be0278a2615ccb4448a9c9d1d4c3",
+                "reference": "b68eed282302be0278a2615ccb4448a9c9d1d4c3",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "jetbrains/phpstorm-stubs": "2026.2",
-                "nikic/php-parser": "^5.8.0",
-                "php": "~8.4.1 || ~8.5.0"
+                "nikic/php-parser": "^5.9.0",
+                "php": "~8.4.1 || ~8.5.0 || ~8.6.0"
             },
             "conflict": {
                 "thecodingmachine/safe": "<1.1.3"
             },
             "require-dev": {
                 "phpbench/phpbench": "^1.7.0",
-                "phpunit/phpunit": "^13.3.2"
+                "phpunit/phpunit": "^13.4.3"
             },
             "suggest": {
                 "composer/composer": "Required to use the ComposerSourceLocator"
@@ -394,9 +400,10 @@
             "description": "Better Reflection - an improved code reflection API",
             "support": {
                 "issues": "https://github.com/Roave/BetterReflection/issues",
-                "source": "https://github.com/Roave/BetterReflection/tree/6.73.0"
+                "source": "https://github.com/Roave/BetterReflection/tree/6.75.0"
             },
-            "time": "2026-09-09T19:57:09+00:00"
+            "time": "2026-10-17T21:34:56+00:00",
+            "published-time": "2026-10-17T21:38:19+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -467,7 +474,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-05T06:23:12+00:00"
+            "time": "2026-06-05T06:23:12+00:00",
+            "published-time": "2026-06-27T21:46:34+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -550,7 +558,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-10T16:19:22+00:00"
+            "time": "2026-04-10T16:19:22+00:00",
+            "published-time": "2026-04-26T14:44:50+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -635,7 +644,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-27T06:59:30+00:00"
+            "time": "2026-05-27T06:59:30+00:00",
+            "published-time": "2026-06-09T06:07:20+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -791,7 +801,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-03T20:44:34+00:00"
+            "time": "2026-07-03T20:44:34+00:00",
+            "published-time": "2026-07-03T20:44:49+00:00"
         },
         {
             "name": "wyrihaximus/broadcast-contracts",
@@ -831,32 +842,33 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-05-11T19:00:10+00:00"
+            "time": "2022-05-11T19:00:10+00:00",
+            "published-time": "2022-05-11T19:02:22+00:00"
         },
         {
             "name": "wyrihaximus/generative-composer-plugin-tooling",
-            "version": "1.8.4",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling.git",
-                "reference": "2484536789b64fdb0649bd032e4bc4c337931792"
+                "reference": "fa43c89c947d92d2e3f096b5e732ad6a8d030f20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-generative-composer-plugin-tooling/zipball/2484536789b64fdb0649bd032e4bc4c337931792",
-                "reference": "2484536789b64fdb0649bd032e4bc4c337931792",
+                "url": "https://api.github.com/repos/WyriHaximus/php-generative-composer-plugin-tooling/zipball/fa43c89c947d92d2e3f096b5e732ad6a8d030f20",
+                "reference": "fa43c89c947d92d2e3f096b5e732ad6a8d030f20",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2",
                 "php": "^8.4",
-                "roave/better-reflection": "^6.72.0",
+                "roave/better-reflection": "^6.75.0",
                 "wyrihaximus/list-classes-in-directory": "^1.7",
                 "wyrihaximus/simple-twig": "^2.4.0"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.14.1",
-                "wyrihaximus/test-utilities": "^14.0.0"
+                "wyrihaximus/makefiles": "^0.15.5",
+                "wyrihaximus/test-utilities": "^14.7.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -880,7 +892,7 @@
             "description": "🐦‍🔥 Generative Composer Plugin Tooling",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling/issues",
-                "source": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling/tree/1.8.4"
+                "source": "https://github.com/WyriHaximus/php-generative-composer-plugin-tooling/tree/1.9.1"
             },
             "funding": [
                 {
@@ -888,7 +900,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-21T14:21:30+00:00"
+            "time": "2026-11-08T17:04:28+00:00",
+            "published-time": "2026-11-08T17:05:07+00:00"
         },
         {
             "name": "wyrihaximus/list-classes-in-directory",
@@ -941,7 +954,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-16T12:35:06+00:00"
+            "time": "2024-07-16T12:35:06+00:00",
+            "published-time": "2024-07-16T12:40:45+00:00"
         },
         {
             "name": "wyrihaximus/simple-twig",
@@ -995,7 +1009,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-29T11:21:53+00:00"
+            "time": "2026-05-29T11:21:53+00:00",
+            "published-time": "2026-05-29T11:40:13+00:00"
         }
     ],
     "packages-dev": [
@@ -10146,5 +10161,5 @@
     "platform-overrides": {
         "php": "8.4.13"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }
